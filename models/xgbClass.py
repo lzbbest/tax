@@ -11,8 +11,8 @@ from xgboost.sklearn import XGBClassifier
 from sklearn.externals import joblib # 保存和读取模型用
 import sklearn
 import copy
-#from preprocess import feature
-'''
+from preprocess import feature
+
 data = pd.read_csv('../data/data.csv')
 ID,mat,label = data['CPCODE'],data.iloc[:,1:-1],data['label']
 one = feature(ID,mat,label)
@@ -21,7 +21,7 @@ train_X, test_X, train_y, test_y = one.split(0.25)
 
 # dtrain = xgb.DMatrix(train_X, label = train_y)
 # dtest = xgb.DMatrix(test_X, label = test_y)
- 
+'''
 XGBC = xgb.XGBClassifier(
     gamma = 0.1,                      # Gamma指定了节点分裂所需的最小损失函数下降值，值越大，算法越保守。
     learning_rate = 0.3,              # 学习速率
@@ -75,7 +75,7 @@ confusion_matrix = ConfusionMatrix(right_y, predicted_y)
 # confusion_matrix.plot(normalized=True)
 # plt.show()
 confusion_matrix.print_stats()
-'''
+
 a=copy.copy(proba_df)
 def score1(a):
     m = np.min(a,axis=1)
@@ -99,9 +99,9 @@ def score2(a,la):
 c=score2(a,0)
 plt.hist(c)
 
+'''
 
-
-
+mat['QNT'].quantile([0.25,0.5,0.75])
 
 
 
